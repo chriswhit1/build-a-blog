@@ -5,12 +5,13 @@
 
             {% for blogpost in blogs %}
                 <div class="blogpost">
-                    <div class="blogpost-title">{{blogpost.title}}</div>
-                    
+                    <div class="blogpost-title">
+                        <h2><a href='/blog/{{blogpost.key().id()}}'{{blogpost.title}}</a></div><h2>
                     <pre class="blogpost-body">{{blogpost.blogpost}}</pre>
                 </div>
             {% endfor %}
                 <br><br>
+
 
 
 {% endblock %}

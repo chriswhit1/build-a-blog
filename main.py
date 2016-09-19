@@ -65,8 +65,8 @@ class NewPage(Handler):
         if title and blogpost:
             a = Blog(title = title, blogpost = blogpost)
             a.put()
-
-            self.redirect("/blog")
+            id = a.key().id()
+            self.redirect("/blog/%s" % id)
         else:
             error = "We need a blog!"
             self.render_newpage(title, blogpost, error)
@@ -87,7 +87,7 @@ class ViewPostHandler(MainPage):
 #self.key().id()????
 
 app = webapp2.WSGIApplication([
-    ('/blog', MainPage),
+    ('/blog/', MainPage),
     ('/newpost', NewPage),
     webapp2.Route('/blog/<post_id:\d+>', ViewPostHandler)
 ], debug=True)
